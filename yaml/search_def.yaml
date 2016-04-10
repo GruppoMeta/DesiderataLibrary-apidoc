@@ -14,6 +14,9 @@
         items:
           type: string
         description: Categorie
+      page:
+        type: integer
+        description: Pagina richiesta, 0 = prima pagina
   SearchResponse:
     type: object
     properties:
@@ -25,6 +28,15 @@
         type: array
         items:
           $ref: '#/definitions/CategoryFacet'
+      page:
+        type: integer
+        description: Pagina corrente
+      pages:
+        type: integer
+        description: Pagine totali
+      total:
+        type: integer
+        description: Numero totale di risultati
   CategoryFacet:
     type: object
     properties:
