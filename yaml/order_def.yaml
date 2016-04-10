@@ -1,0 +1,36 @@
+  UserInvoice:
+    properties:
+      firstName:
+        type: string
+        description: Nome
+      lastName:
+        type: string
+        description: Cognome
+      address:
+        type: string
+        description: Indirizzo
+      email:
+        type: string
+        description: E-mail
+      fiscalCode:
+        type: string
+        description: Codice fiscale
+      city:
+        type: string
+        description: Città
+      province:
+        type: string
+        description: Provincia
+      cap:
+        type: string
+        description: CAP
+      country:
+        type: string
+        description: Nazione
+
+
+  CheckoutResponse:
+    properties:
+      url:
+        type: string
+        description: URL del gateway bancario

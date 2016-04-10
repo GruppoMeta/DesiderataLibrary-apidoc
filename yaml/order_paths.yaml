@@ -1,0 +1,60 @@
+  /rest/order/InvoiceLoad:
+    get:
+      summary: Caricamento dati di fatturazione
+      description: |
+        Restituisce i dati di fatturazione dell'utente
+      tags:
+        - Shop
+      responses:
+        200:
+          description: Dati di fatturazione
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserInvoice'
+        401:
+          description: Utente non loggato
+        500:
+          description: Errore interno al server
+
+  /rest/order/Checkout:
+    post:
+      summary: Pagamento
+      description: |
+        Memorizzazione ordine e pagamento.
+      parameters:
+        - name: user
+          in: body
+          description: dati utente
+          required: true
+          schema:
+            $ref: '#/definitions/UserInvoice'
+        - name: cart
+          in: body
+          description: carrello
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+        - name: urlSuccess
+          in: body
+          description: url del FE da caricare al ritorno dalla banca in caso di successo
+          required: true
+          type: string
+        - name: urlError
+          in: body
+          description: url del FE da caricare al ritorno dalla banca in caso di errore
+          required: true
+          type: string
+      tags:
+        - Shop
+      responses:
+        200:
+          description: Utente
+          schema:
+            $ref: '#/definitions/CheckoutResponse'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server

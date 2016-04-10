@@ -1,0 +1,39 @@
+  CatalogPublication:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Id pubblicazione
+      title:
+        type: string
+        description: Titolo pubblicazione
+      author:
+        type: string
+        description: Autori
+      publisher:
+        type: string
+        description: Editore
+      code:
+        type: string
+        description: codice
+      coverSmall:
+        type: string
+        description: URL cover piccola
+      coverBig:
+        type: string
+        description: URL cover grande
+      type:
+        type: string
+        description: Tipo pubblicazione
+      isbn:
+        type: string
+        description: ISBN
+      price:
+        type: string
+        description: Prezzo
+      isFree:
+        type: boolean
+        description: Flag che indica se il libro è gratuito
+      inLibrary:
+        type: boolean
+        description: Flag che indica se il libro è presente nella libreria

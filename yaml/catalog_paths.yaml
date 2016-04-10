@@ -1,0 +1,16 @@
+  /rest/getCatalog:
+    get:
+      summary: Catalogo
+      description: |
+        Restituisce il catalogo
+      tags:
+        - Catalogo
+      responses:
+        200:
+          description: Catalogo
+          schema:
+            $ref: '#/definitions/CatalogPublication'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server

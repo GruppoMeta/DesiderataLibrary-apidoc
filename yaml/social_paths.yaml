@@ -1,0 +1,19 @@
+  /rest/sharing/getSharingButtons:
+    get:
+      summary: Condivisione social
+      description: |
+        Restituisce gli url per la condivisione sui social.
+        Lato client occorre sostituire il placeholder #url# con l'url da convididere.
+      tags:
+        - Social
+      responses:
+        200:
+          description: Risultato della ricerca
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SharingButton'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server

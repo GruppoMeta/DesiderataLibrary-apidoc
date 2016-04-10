@@ -1,0 +1,47 @@
+  /rest/license/burn/{code}:
+    get:
+      summary: Brucia un codice
+      description: |
+        Brucia un codice associato a una licenza di una pubblicazione.
+      parameters:
+        - name: code
+          in: path
+          description: Codice
+          required: true
+          type: string
+      tags:
+        - Licenza
+      responses:
+        200:
+          description: Restituice la libreria dell'utente
+          schema:
+            type: boolean
+        400:
+          description: Parametri non validi
+        401:
+          description: Utente non loggato
+        500:
+          description: Errore interno al server
+
+  /rest/license/add-free/{id}:
+    get:
+      summary: Aggiunge una liceza di un titolo gratuito
+      parameters:
+        - name: id
+          in: path
+          description: Id dalla pubblicazione
+          required: true
+          type: string
+      tags:
+        - Licenza
+      responses:
+        200:
+          description: Restituice la libreria dell'utente
+          schema:
+            type: boolean
+        400:
+          description: Parametri non validi
+        401:
+          description: Utente non loggato
+        500:
+          description: Errore interno al server

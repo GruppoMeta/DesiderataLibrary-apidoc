@@ -1,0 +1,158 @@
+  /rest/tags/getUserKeywords/{term}:
+    get:
+      summary: Elenco delle parole chiave utente
+      description: |
+        Restituisce l'elenco delle parole chiave create dall'utente.
+      parameters:
+        - name: term
+          in: path
+          description: Chiave di ricerca
+          required: false
+          type: string
+      tags:
+        - Tags
+      responses:
+        200:
+          description: Elenco delle parole chiave utente
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserKeyword'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/tags/createUserKeyword/{term}:
+    get:
+      summary: Crea una parola chiave utente
+      description: |
+        Crea una parola chiave dell'utente.
+      parameters:
+        - name: term
+          in: path
+          description: Parola chiave
+          required: true
+          type: string
+      tags:
+        - Tags
+      responses:
+        200:
+          description: Parole chiave utente
+          schema:
+            $ref: '#/definitions/UserKeyword'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/tags/getOntologyTags/{term}:
+    get:
+      summary: Elenco delle entità e dei contenuti dell'ontologia
+      description: |
+        Restituisce l'lenco delle entità e dei contenuti dell'ontologia
+      parameters:
+        - name: term
+          in: path
+          description: Chiave di ricerca
+          required: false
+          type: string
+      tags:
+        - Tags
+      responses:
+        200:
+          description: Elenco delle entità e dei contenuti dell'ontologia
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/OntologyTag'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/tags/load/{volume_id}/{content_id}:
+    get:
+      summary: Carica i tag
+      description: |
+        Carica i tag dell'utente
+      parameters:
+        - name: volume_id
+          in: path
+          description: Id del volume
+          required: true
+          type: integer
+        - name: content_id
+          in: path
+          description: Id del contenuto
+          required: true
+          type: integer
+      tags:
+        - Tags
+      responses:
+        200:
+          description: Tag dell'utente
+          schema:
+            $ref: '#/definitions/Tags'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/tags/save/{volume_id}/{content_id}:
+    post:
+      summary: Salva i tag
+      description: |
+        Salva i tag dell'utente
+      parameters:
+        - name: volume_id
+          in: path
+          description: Id del volume
+          required: true
+          type: integer
+        - name: content_id
+          in: path
+          description: Id del contenuto
+          required: true
+          type: integer
+        - name: tags
+          in: body
+          description: Tags
+          required: true
+          schema:
+            $ref: '#/definitions/Tags'
+      tags:
+        - Tags
+      responses:
+        200:
+          description: Tag dell'utente
+          schema:
+            $ref: '#/definitions/Tags'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/tags/search:
+    post:
+      summary: Ricerca per tag
+      description: |
+        Ricerca i testi presenti nella libreria per tag
+      parameters:
+        - name: ricerca
+          in: body
+          description: Query di ricerca
+          required: true
+          schema:
+            $ref: '#/definitions/TagSearch'
+      tags:
+        - Tags
+      responses:
+        200:
+          description: Risultato della ricerca
+          schema:
+            $ref: '#/definitions/TagSearchResponse'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server

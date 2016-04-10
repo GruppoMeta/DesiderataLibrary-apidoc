@@ -1,0 +1,29 @@
+  /rest/recommender/recommend/{volume_id}/{content_id}:
+    get:
+      summary: Recommender
+      description: |
+        Servizio che restituisce i contenuti raccomandati.
+      parameters:
+        - name: volume_id
+          in: path
+          description: Id del volume
+          required: true
+          type: integer
+        - name: content_id
+          in: path
+          description: Id del contenuto
+          required: true
+          type: integer
+      tags:
+        - Recommender
+      responses:
+        200:
+          description: R
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Recommendation'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server

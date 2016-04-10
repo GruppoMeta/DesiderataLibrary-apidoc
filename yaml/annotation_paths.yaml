@@ -1,0 +1,247 @@
+  /rest/annotations/{type}:
+    get:
+      summary: Elenco delle annotazioni
+      description: |
+        Restituisce l'elenco delle annotazioni dato il tipo.
+      parameters:
+        - name: type
+          in: path
+          description: Tipo annotazione
+          required: true
+          type: string
+      tags:
+        - Annotazioni
+      responses:
+        200:
+          description: Elenco annotatazioni
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AnnotationResponse'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+    post:
+      summary: Crea un'annotazione
+      description: |
+        Crea un'annotazione dato il tipo
+      parameters:
+        - name: type
+          in: path
+          description: Tipo annotazione
+          required: true
+          type: string
+        - name: annotation
+          in: body
+          description: annotation to add
+          required: true
+          schema:
+            $ref: '#/definitions/Annotation'
+      tags:
+        - Annotazioni
+      responses:
+        200:
+          description: L'annotazione creata
+          schema:
+            $ref: '#/definitions/AnnotationResponse'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/annotations/{type}/{id}:
+    get:
+      summary: Annotazione dato l'id
+      description: |
+        Restituisce una annotazione dato il tipo e l'id.
+      parameters:
+        - name: type
+          in: path
+          description: Tipo annotazione
+          required: true
+          type: string
+        - name: id
+          in: path
+          description: Id annotazione
+          required: true
+          type: integer
+      tags:
+        - Annotazioni
+      responses:
+        200:
+          description: Elenco annotatazioni
+          schema:
+            $ref: '#/definitions/AnnotationResponse'
+        400:
+          description: Parametri non validi
+        404:
+          description: Annotazione non trovata
+        500:
+          description: Errore interno al server
+    delete:
+      summary: Cancella un'annotazione
+      description: |
+        Cancella un'annotazione dato il tipo e l'id
+      parameters:
+        - name: type
+          in: path
+          description: Tipo annotazione
+          required: true
+          type: string
+        - name: id
+          in: path
+          description: Id annotazione
+          required: true
+          type: integer
+      tags:
+        - Annotazioni
+      responses:
+        200:
+          description: Annotazione cancellata correttamente
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+    put:
+      summary: Aggiorna un'annotazione
+      description: |
+        Aggiorna un'annotazione dato il tipo e l'id
+      parameters:
+        - name: type
+          in: path
+          description: Tipo annotazione
+          required: true
+          type: string
+        - name: id
+          in: path
+          description: Id annotazione
+          required: true
+          type: integer
+        - name: annotation
+          in: body
+          description: annotation to add
+          required: true
+          schema:
+            $ref: '#/definitions/Annotation'
+      tags:
+        - Annotazioni
+      responses:
+        200:
+          description: L'annotazione aggiornata
+          schema:
+            $ref: '#/definitions/AnnotationResponse'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/annotations/byVolume/{volume_id}:
+    get:
+      summary: Annotazioni per id del volume
+      description: |
+        Restituisce l'elenco delle annotazioni dato l'id del volume.
+      parameters:
+        - name: volume_id
+          in: path
+          description: Id del volume
+          required: true
+          type: integer
+      tags:
+        - Annotazioni
+      responses:
+        200:
+          description: Elenco annotatazioni
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AnnotationResponse'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/annotations/byVolume/{volume_id}/{type}:
+    get:
+      summary: Annotazioni per id del volume e tipo annotazione
+      description: |
+        Restituisce l'elenco delle annotazioni del tipo desiderato dato l'id del volume.
+      parameters:
+        - name: volume_id
+          in: path
+          description: Id del volume
+          required: true
+          type: integer
+        - name: type
+          in: path
+          description: Tipo annotazione
+          required: true
+          type: string
+      tags:
+        - Annotazioni
+      responses:
+        200:
+          description: Elenco annotatazioni
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AnnotationResponse'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/annotations/byContent/{volume_id}/{content_id}:
+    get:
+      summary: Annotazioni per id del volume e id del contenuto
+      description: |
+        Restituisce l'elenco delle annotazioni dato l'id del volume e l'id del contenuto.
+      parameters:
+        - name: volume_id
+          in: path
+          description: Id del volume
+          required: true
+          type: integer
+        - name: content_id
+          in: path
+          description: Id del contenuto
+          required: true
+          type: integer
+      tags:
+        - Annotazioni
+      responses:
+        200:
+          description: Elenco annotatazioni
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AnnotationResponse'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/tags/getUserKeywords/{term}:
+    get:
+      summary: Elenco delle parole chiave utente
+      description: |
+        Restituisce l'elenco delle parole chiave create dall'utente.
+      parameters:
+        - name: term
+          in: path
+          description: Chiave di ricerca
+          required: false
+          type: string
+      tags:
+        - Tags
+      responses:
+        200:
+          description: Elenco delle parole chiave utente
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserKeyword'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server

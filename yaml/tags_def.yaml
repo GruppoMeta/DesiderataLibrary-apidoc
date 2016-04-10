@@ -1,0 +1,52 @@
+  UserKeyword:
+    properties:
+      id:
+        type: integer
+        description: Id annotazione
+      text:
+        type: string
+        description: Parola chiave
+  OntologyTag:
+    properties:
+      id:
+        type: integer
+        description: Id annotazione
+      text:
+        type: string
+        description: Titolo
+      type:
+        type: string
+        description: Tipo
+        enum:
+          - Entità
+          - Contenuto
+  Tags:
+    type: object
+    properties:
+      userKeywords:
+        type: array
+        items:
+          $ref: '#/definitions/UserKeyword'
+      ontologyTags:
+        type: array
+        items:
+          $ref: '#/definitions/OntologyTag'
+  TagSearch:
+    type: object
+    properties:
+      topics:
+        type: array
+        items:
+          type: string
+        description: Categorie
+  TagSearchResponse:
+    type: object
+    properties:
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/BookSection'
+      categories:
+        type: array
+        items:
+          $ref: '#/definitions/CategoryFacet'

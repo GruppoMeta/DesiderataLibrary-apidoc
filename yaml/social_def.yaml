@@ -1,0 +1,9 @@
+  SharingButton:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Id social
+      url:
+        type: integer
+        description: URL condivisione

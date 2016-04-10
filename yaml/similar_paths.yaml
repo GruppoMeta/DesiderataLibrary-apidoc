@@ -1,0 +1,29 @@
+  /rest/similar/{volume_id}/{content_id}:
+    get:
+      summary: Testi Simili
+      description: |
+        Ricerca i testi simili
+      parameters:
+        - name: volume_id
+          in: path
+          description: Id del volume
+          required: true
+          type: integer
+        - name: content_id
+          in: path
+          description: Id del contenuto
+          required: true
+          type: integer
+      tags:
+        - Testi simili
+      responses:
+        200:
+          description: Risultato della ricerca
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BookSection'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server

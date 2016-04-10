@@ -1,0 +1,101 @@
+  /rest/user/register:
+    post:
+      summary: Registrazione utente
+      description: |
+        Registrazione utente.
+      parameters:
+        - name: user
+          in: body
+          description: credenziali
+          required: true
+          schema:
+            $ref: '#/definitions/UserRegister'
+      tags:
+        - Utenti
+      responses:
+        200:
+          description: Utente
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/user/update:
+    put:
+      summary: Modifica utente
+      description: |
+        Modifica i dati relativi all'utente.
+      parameters:
+        - name: user
+          in: body
+          description: Utente
+          required: true
+          schema:
+            $ref: '#/definitions/UserUpdate'
+      tags:
+        - Utenti
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/user/revoverPassword:
+    post:
+      summary: Recupero password
+      description: |
+        Recupero password via mail.
+      parameters:
+        - name: email
+          in: body
+          description: email
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                description: Email utente
+      tags:
+        - Utenti
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/user/helpRequest:
+    post:
+      summary: Richiesta assistenza
+      description: |
+        Richiesta assistenza.
+      parameters:
+        - name: assistenza
+          in: body
+          description: Assistenza
+          required: true
+          schema:
+            $ref: '#/definitions/HelpData'
+      tags:
+        - Utenti
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server

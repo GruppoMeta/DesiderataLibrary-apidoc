@@ -1,0 +1,37 @@
+  /cds/download/{publication_id}:
+    get:
+      summary: Scarica il pacchetto
+      description: |
+        Scarica il pacchetto
+      parameters:
+        - name: publication_id
+          in: path
+          description: Id della pubblicazione
+          required: true
+          type: integer
+        - name: lpid
+          in: query
+          description: Identificativo del device
+          required: true
+          type: string
+        - name: key
+          in: query
+          description: Identificativo dell'applicazione
+          required: true
+          type: string
+      tags:
+        - Cds
+      responses:
+        200:
+          description: File
+          type: binary
+        400:
+          description: Parametri non validi
+        401:
+          description: Utente non loggato
+        403:
+          description: Licenza per il pacchetto non disponibile
+        404:
+          description: Pacchetto non esiste
+        500:
+          description: Errore interno al server

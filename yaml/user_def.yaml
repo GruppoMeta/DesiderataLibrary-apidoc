@@ -1,0 +1,101 @@
+  UserRegister:
+    required:
+      - username
+      - password
+      - firstName
+      - lastName
+      - email
+    properties:
+      username:
+        type: string
+        description: Username
+      password:
+        type: string
+        description: Password
+      firstName:
+        type: string
+        description: Nome
+      lastName:
+        type: string
+        description: Cognome
+      email:
+        type: string
+        description: E-mail
+      age:
+        type: string
+        description: Età
+      city:
+        type: string
+        description: Città
+      interests:
+        type: string
+        description: Interessi
+      qualification:
+        type: string
+        description: Titolo di studio
+      profession:
+        type: string
+        description: Professione
+
+  UserUpdate:
+    required:
+      - username
+      - password
+      - firstName
+      - lastName
+      - email
+    properties:
+      username:
+        type: string
+        description: Username
+      password:
+        type: string
+        description: Password
+      firstName:
+        type: string
+        description: Nome
+      lastName:
+        type: string
+        description: Cognome
+      email:
+        type: string
+        description: E-mail
+      age:
+        type: string
+        description: Età
+      city:
+        type: string
+        description: Città
+      interests:
+        type: string
+        description: Interessi
+      qualification:
+        type: string
+        description: Titolo di studio
+      profession:
+        type: string
+        description: Professione
+
+  HelpData:
+    required:
+      - firstName
+      - lastName
+      - email
+      - bookTitle
+      - description
+    properties:
+      firstName:
+        type: string
+        description: Nome
+      lastName:
+        type: string
+        description: Cognome
+      email:
+        type: string
+        description: E-mail
+      bookTitle:
+        type: string
+        description: Tidolo libro
+      description:
+        type: string
+        description: Descrizione

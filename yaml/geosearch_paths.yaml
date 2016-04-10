@@ -1,0 +1,27 @@
+  /rest/geo/search/{geo}/{distance}:
+    get:
+      summary: Ricerca spaziale
+      description: |
+        Ricerca spaziale
+      parameters:
+        - name: coordinate
+          in: path
+          description: Coordinate geografiche del centro
+          required: true
+          type: string
+        - name: distanza
+          in: path
+          description: Distanza dal centro
+          required: true
+          type: integer
+      tags:
+        - Geolocalizzazione
+      responses:
+        200:
+          description: Risultato della ricerca
+          schema:
+            $ref: '#/definitions/BookSectionGeo'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server

@@ -1,0 +1,27 @@
+  Recommendation:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Id elemento
+      publicationId:
+        type: integer
+        description: Id pubblicazione
+      score: 
+        type: integer
+        description: Punteggio raccomandazione
+      title:
+        type: string
+        description: Titolo del libro
+      subtitle:
+        type: string
+        description: Titolo del paragrafo
+      preview:
+        type: string
+        description: Anteprima paragrafo
+      inLibrary:
+        type: boolean
+        description: Flag che indica se il libro è presente nella libreria
+      isFree:
+        type: boolean
+        description: Flag che indica se il libro è gratuito

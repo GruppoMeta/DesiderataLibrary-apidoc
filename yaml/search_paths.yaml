@@ -1,0 +1,83 @@
+  /rest/search:
+    post:
+      summary: Ricerca
+      description: |
+        Ricerca i testi presenti nelle pubblicazioni pubblicate
+      parameters:
+        - name: ricerca
+          in: body
+          description: Query di ricerca
+          required: true
+          schema:
+            $ref: '#/definitions/Search'
+      tags:
+        - Ricerca
+      responses:
+        200:
+          description: Risultato della ricerca
+          schema:
+            $ref: '#/definitions/SearchResponse'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/inferenceSearch/{volume_id}/{content_id}:
+    get:
+      summary: Ricerca per inferenza
+      description: |
+        Ricerca per inferenza
+      parameters:
+        - name: volume_id
+          in: path
+          description: Id del volume
+          required: true
+          type: integer
+        - name: content_id
+          in: path
+          description: Id del contenuto
+          required: true
+          type: integer
+      tags:
+        - Ricerca
+      responses:
+        200:
+          description: Risultato della ricerca
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BookSection'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/publicationSearch/{volume_id}:
+    get:
+      summary: Ricerca fulltext pubblicazione
+      description: |
+        Ricerca fulltext all'interno di una pubblicazione
+      parameters:
+        - name: volume_id
+          in: path
+          description: Id del volume
+          required: true
+          type: integer
+        - name: text
+          in: query
+          description: Testo da cercare
+          required: true
+          type: integer
+      tags:
+        - Ricerca
+      responses:
+        200:
+          description: Risultato della ricerca
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BookSection'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server

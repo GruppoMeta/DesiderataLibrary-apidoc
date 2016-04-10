@@ -1,0 +1,174 @@
+  /rest/desiderata:
+    get:
+      summary: Elenco delle desiderata
+      description: |
+        Restituisce l'elenco delle desiderata, filtrato per il testo di ricerca text (opzionale).
+      parameters:
+        - name: search
+          in: query
+          description: Testo di ricerca
+          required: false
+          type: string
+      tags:
+        - Desiderata
+      responses:
+        200:
+          description: Elenco delle desiderata dell'utente
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Desiderata'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+    post:
+      summary: Creazione di una desiderata
+      description: |
+        Crea una nuova desiderata.
+      parameters:
+        - name: desiderata
+          in: body
+          description: Desiderata
+          required: true
+          schema:
+            $ref: '#/definitions/DesiderataDetail'
+      tags:
+        - Desiderata
+      responses:
+        200:
+          description: Desiderata
+          schema:
+            $ref: '#/definitions/DesiderataDetailResponse'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/desiderata/{id}:
+    get:
+      summary: Dettaglio di una desiderata
+      description: |
+        Restituisce il dettaglio di una desiderata.
+      parameters:
+        - name: id
+          in: path
+          description: Id desiderata
+          required: true
+          type: integer
+      tags:
+        - Desiderata
+      responses:
+        200:
+          description: Desiderata
+          schema:
+            $ref: '#/definitions/DesiderataDetailResponse'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+    delete:
+      summary: Cancella una desiderata
+      description: |
+        Cancella la desiderata avente l'id fornito.
+      parameters:
+        - name: id
+          in: path
+          description: Id desiderata
+          required: true
+          type: integer
+      tags:
+        - Desiderata
+      responses:
+        200:
+          description: Annotazione cancellata correttamente
+        400:
+          description: Parametri non validi
+        404:
+          description: Desiderta non trovata
+        500:
+          description: Errore interno al server
+    put:
+      summary: Aggiorna una desiderata
+      description: |
+        Aggiorna la desiderata avente l'id fornito.
+      parameters:
+        - name: id
+          in: path
+          description: Id desiderata
+          required: true
+          type: integer
+        - name: desiderata
+          in: body
+          description: Desiderata
+          required: true
+          schema:
+            $ref: '#/definitions/DesiderataDetail'
+      tags:
+        - Desiderata
+      responses:
+        200:
+          description: Desiderata
+          schema:
+            $ref: '#/definitions/DesiderataDetailResponse'
+        400:
+          description: Parametri non validi
+        404:
+          description: Desiderta non trovata
+
+  /rest/desiderata/addCover/{id}:
+    post:
+      summary: Aggiunge una cover
+      description: |
+        Aggiunge una cover alla desiderata specificata dall'id.
+      parameters:
+        - name: id
+          in: path
+          description: Id desiderata
+          required: true
+          type: integer
+        - name: picture
+          in: formData
+          description: File
+          required: true
+          type: file
+      tags:
+        - Desiderata
+      responses:
+        200:
+          description: OK
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/desiderata/addContent/{id}/{volumeId}/{contentId}:
+    get:
+      summary: Aggiunge un contenuto
+      description: |
+        Aggiunge un contenuto alla desiderata specificata dall'id.
+      parameters:
+        - name: id
+          in: path
+          description: Id desiderata
+          required: true
+          type: integer
+        - name: volumeId
+          in: path
+          description: Id pubblicazione
+          required: true
+          type: integer
+        - name: contentId
+          in: path
+          description: Id contenuto
+          required: true
+          type: integer
+      tags:
+        - Desiderata
+      responses:
+        200:
+          description: OK
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server

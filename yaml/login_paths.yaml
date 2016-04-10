@@ -1,0 +1,55 @@
+  /rest/login:
+    post:
+      summary: Login
+      description: |
+        Effettua il login.
+      parameters:
+        - name: user
+          in: body
+          description: credenziali
+          required: true
+          schema:
+            $ref: '#/definitions/UserLogin'
+      tags:
+        - Autenticazione
+      responses:
+        200:
+          description: Utente
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/logout:
+    get:
+      summary: Logout
+      description: |
+        Effettua il logout.
+      tags:
+        - Autenticazione
+      responses:
+        200:
+          description: OK
+        400:
+          description: Parametri non validi
+        500:
+          description: Errore interno al server
+
+  /rest/checkLogin:
+    get:
+      summary: CheckLogin
+      description: |
+        Verifica lo stato di login.
+      tags:
+        - Autenticazione
+      responses:
+        200:
+          description: OK
+        401:
+          description: Non autorizzato
+        500:
+          description: Errore interno al server

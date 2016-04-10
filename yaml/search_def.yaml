@@ -1,0 +1,36 @@
+  Search:
+    type: object
+    properties:
+      text:
+        type: string
+        description: Testo da ricercare
+      keywords:
+        type: array
+        items:
+          type: string
+        description: Parole chiave
+      topics:
+        type: array
+        items:
+          type: string
+        description: Categorie
+  SearchResponse:
+    type: object
+    properties:
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/BookSection'
+      categories:
+        type: array
+        items:
+          $ref: '#/definitions/CategoryFacet'
+  CategoryFacet:
+    type: object
+    properties:
+      label:
+        type: string
+      number:
+        type: integer
+      selected:
+        type: boolean

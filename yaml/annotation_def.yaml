@@ -1,0 +1,46 @@
+  Annotation:
+    required:
+      - type
+      - title
+    properties:
+      title:
+        type: string
+        description: Titolo
+      data:
+        type: string
+        description: Dati annotazione
+      volume_id:
+        type: string
+        description: Id del volume
+      content_id:
+        type: string
+        description: Id del contenuto
+  AnnotationResponse:
+    properties:
+      id:
+        type: integer
+        description: Id annotazione
+      type:
+        type: string
+        description: Tipo
+      title:
+        type: string
+        description: Titolo
+      data:
+        type: string
+        description: Dati annotazione
+      user_id:
+        type: string
+        description: Id dell'utente
+      volume_id:
+        type: string
+        description: Id del volume
+      content_id:
+        type: string
+        description: Id del contenuto
+      created_at:
+        type: dateTime
+        description: Data creazione
+      updated_at:
+        type: dateTime
+        description: Data aggiornamento
